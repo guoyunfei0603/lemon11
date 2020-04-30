@@ -3,7 +3,7 @@
 # @Author  : guoyunfei.0603
 # @File    : demo1.py
 
-from openpyxl import Workbook
-wb = Workbook()
-print("更新后的代码")
+from openpyxl import load_workbook
+wb = load_workbook("")
 
+wb.worksheets

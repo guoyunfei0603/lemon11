@@ -4,7 +4,7 @@
 # @File    : http_request.py
 
 import requests
-
+import json
 requests.packages.urllib3.disable_warnings()  # 移除安全证书警告
 
 class HttpRequest:
@@ -22,7 +22,19 @@ class HttpRequest:
             res = requests.get(url,data,cookies=cookies)
         else:
             res = requests.post(url,data,cookies=cookies)
-        return res
-if __name__ == '__main__':
+            # 注意：如果Content-Type类型是json 那么需要序列化，导入json包  json.dumps(data)
 
-    res = HttpRequest().http_request()
+        return res
+# if __name__ == '__main__':
+#     url = 'http://120.78.128.25:8766/futureloan/member/login'
+#
+#     data = {
+#         "mobile_phone": "18535653506",
+#         "pwd": "python123"
+#
+#     }
+#
+#     headers = {'X-Lemonban-Media-Type': 'lemonban.v2',
+#                'Content-Type': 'application/json'}
+#     res = HttpRequest().http_request(url,json.dumps(data),'post',headers)
+#     print(res.text)

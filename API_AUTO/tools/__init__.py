@@ -2,20 +2,23 @@
 # @Time    : 2020/4/18 16:04
 # @Author  : guoyunfei.0603
 # @File    : __init__.py.py
-import requests
 
-# gogokid 家长端登录
-url = 'https://www.gogokid.com/passport/web/user/login/?account_sdk_source=web'
-data = {
-'account':'18503959675',
-'password':'123456',
-'region':'CN',
-'aid':1277,
-'language':'zh'
-}
+# import requests
+# #
+# url = "http://120.78.128.25:8766/futureloan/member/login"
+#
+# data = "{\r\n  \"mobile_phone\": \"18535653506\",\r\n  \"pwd\": \"python123\"\r\n}"
+# # data = {
+# #     "mobile_phone": "18535653506",
+# #     "pwd": "python123"
+# # }
+# headers = {
+#   'X-Lemonban-Media-Type': 'lemonban.v2',
+#   'Content-Type': 'application/json'
+# }
+#
+# response = requests.request("POST", url, headers=headers, data = data)
+#
+# print(response.text.encode('utf8'))
 
-res = requests.post(url,data,verify = False)
-print(res.json())
-print(res.cookies)
-
-# 任重而道远啊 cookies，到下个接口一直不行
+# print(response.json())
