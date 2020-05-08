@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2020/4/19 23:31
 # @Author  : guoyunfei.0603
-# @File    : class_01.py
+# @File    : qcd.py
 
 # 接口测试的本质就是测试类里面的函数，通过数据驱动
 # 单元测试的本质：测试函数 代码级别  通过代码级别测试

@@ -18,6 +18,7 @@ class Qian_Cheng_Dai(unittest.TestCase):
         self.token_headers = {'Authorization':self.test_login_01().json()['data']['token_info']['token']}
 
     def get_headers(self): # 请求头，包括token
+        # 拼接字典
         headers=self.login_headers.copy()
         headers.update(self.token_headers)
 
