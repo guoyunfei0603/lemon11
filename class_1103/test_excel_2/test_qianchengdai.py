@@ -6,14 +6,13 @@ import HTMLTestRunnerNew
 
 from class_1103.test_excel_2.demo_excel import Demo_Excel
 from class_1103.test_excel_2.qianchengdai import Qian_Cheng_Dai
+from class_1103.test_excel_2.qianchengdai import Qian_Cheng_Dai
 import unittest
 
 suite = unittest.TestSuite()
 
-test_data = Demo_Excel( 'Demo.xlsx','Sheet1').get_data()
-
-for item in test_data:
-    suite.addTest(Qian_Cheng_Dai('test_api', item['url'], eval(item['data']), item['method'], item['expected']))
+loader = unittest.TestLoader()
+suite.addTest(loader.loadTestsFromTestCase(Qian_Cheng_Dai))
 
 
 with open('测试报告.html','wb') as file:

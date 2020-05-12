@@ -5,7 +5,16 @@
 import unittest
 from API_AUTO.tools.http_request import HttpRequest
 from API_AUTO.tools.test_fanshe import GetData
+from ddt import ddt,data
+from class_1103.test_excel_2.demo_excel import Demo_Excel
 
+'''
+用ddt方式  建议使用，  但是超继承的原理要懂，保留父类的属性方法，super
+'''
+
+test_data = Demo_Excel('Demo.xlsx', 'Sheet1').get_data([1,3]) # 传入列表['case_id'] 达到控制执行那几条用例
+
+@ddt
 class Qian_Cheng_Dai(unittest.TestCase):
     def setUp(self):
         pass
@@ -13,21 +22,20 @@ class Qian_Cheng_Dai(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def __init__(self,methodName,url,data,method,expected):
-        super(Qian_Cheng_Dai,self).__init__(methodName) # 超继承 保留父类（TestCase）的init函数里面的参数methodName
-        self.url = url
-        self.data = data
-        self.method =method
-        self.expected = expected
 
+    @data(*test_data)
+    def test_api(self,item):# 接口用例
 
-    def test_api(self):# 接口用例
-
-        res = HttpRequest().http_request(self.url,self.data,self.method,getattr(GetData,'Cookie'))
+        res = HttpRequest().http_request(item['url'],eval(item['data']),item['method'],getattr(GetData,'Cookie'))
         if res.cookies:
             setattr(GetData,'Cookie',res.cookies)
 
         try:
-            self.assertEqual(self.expected,res.json()['msg'])
+            self.assertEqual(item['expected'],res.json()['msg'])
         except AssertionError as e:
             raise e
+
+if __name__ == '__main__':
+    unittest.main()
+
+

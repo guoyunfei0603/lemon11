@@ -13,8 +13,8 @@ test_data = ([1,2,3],[66,77,88])
 class TestMath(unittest.TestCase):
     @data(test_data)
     @unpack
-    def test_print_data(self,item):
-        print('item:',item)
+    def test_print_data(self,a,b):
+        print('item:',a,b)
 
 
 
